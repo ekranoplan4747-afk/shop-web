@@ -1,1 +1,117 @@
-file:///C:/Users/tvass/Downloads/shop%20web.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roblox & Nitro Shop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1e1e2f;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .product-card {
+            background: #2e2e4d;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            color: #00FF00;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .buy-button {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 5px;
+            background: #FFD700;
+            color: #1e1e2f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .buy-button:hover {
+            background: #ffc700;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛒 Roblox & Nitro Shop</h1>
+    <div class="product-list" id="productList"></div>
+
+    <script>
+        // Liste complète de tes produits avec prix en euros pour PayPal
+        const products = [
+            {name: "500RBX", price: "4.49", emoji: "💎"},
+            {name: "1000RBX", price: "8.99", emoji: "💎"},
+            {name: "1500RBX", price: "13.49", emoji: "💎"},
+            {name: "2000RBX", price: "17.99", emoji: "💎"},
+            {name: "2500RBX", price: "22.49", emoji: "💎"},
+            {name: "3000RBX", price: "26.99", emoji: "💎"},
+            {name: "3500RBX", price: "31.49", emoji: "💎"},
+            {name: "4000RBX", price: "35.99", emoji: "💎"},
+            {name: "4500RBX", price: "40.49", emoji: "💎"},
+            {name: "5000RBX", price: "44.99", emoji: "💎"},
+            {name: "NITROBOOST", price: "6.99", emoji: "🚀"},
+            {name: "NITROBASIC", price: "1.99", emoji: "🚀"}
+        ];
+
+        const productList = document.getElementById("productList");
+
+        products.forEach(product => {
+            const card = document.createElement("div");
+            card.classList.add("product-card");
+
+            // Crée un lien PayPal
+            const paypalLink = `https://www.paypal.com/paypalme/bvasseur177/${product.price}`;
+
+            card.innerHTML = `
+                <div class="emoji">${product.emoji}</div>
+                <div class="name">${product.name}</div>
+                <div class="price">💰 ${product.price}€</div>
+                <a class="buy-button" href="${paypalLink}" target="_blank">Buy Now</a>
+            `;
+
+            productList.appendChild(card);
+        });
+    </script>
+</body>
+</html>
